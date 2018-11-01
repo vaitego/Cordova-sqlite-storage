@@ -533,7 +533,7 @@ var mytests = function() {
         // not stored properly by Android-sqlite-connector
         // ref: litehelpers/Cordova-sqlite-storage#564
         it(suiteName + 'INSERT TEXT string with emoji [\\u1F603 SMILING FACE (MOUTH OPEN)], SELECT the data, check, and check HEX [XXX HEX encoding BUG IGNORED on default Android NDK access implementation (Android-sqlite-connector with Android-sqlite-native-driver), TBD TRUNCATION BUG REPRODUCED on Windows; default sqlite HEX encoding: UTF-6le on Windows & Android 4.1-4.3 (WebKit) Web SQL, UTF-8 otherwise]' , function(done) {
-          var db = openDatabase('INSERT-emoji-and-check.db', '1.0', 'Demo', DEFAULT_SIZE);
+          var db = openDatabase('INSERT-25-emoji-and-check.db');
 
           db.transaction(function(tx) {
             tx.executeSql('DROP TABLE IF EXISTS test_table');
