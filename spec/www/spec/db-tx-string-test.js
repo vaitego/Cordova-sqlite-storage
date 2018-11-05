@@ -1253,6 +1253,9 @@ var mytests = function() {
           // (Android-sqlite-connector with Android-sqlite-ext-native-driver,
           // using NDK) on Android pre-6.0
           // ref: litehelpers/Cordova-sqlite-storage#564
+          // XXX TODO FIX REFS for:
+          // - litehelpers/Cordova-sqlite-evcore-extbuild-free#19
+          // - litehelpers/Android-sqlite-evcore-native-driver-free#1
           var db = openDatabase('UTF8-2050-hex-value-test.db');
 
           db.transaction(function(tx) {
