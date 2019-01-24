@@ -72,11 +72,6 @@ namespace SQLite3
 
   int Statement::BindText(int index, Platform::String^ val)
   {
-    return sqlite3_bind_text16(statement, index, val->Data(), -1, SQLITE_TRANSIENT);
-  }
-
-  int Statement::BindInt(int index, int val)
-  {
     // To preserve embedded nulls within text data and fix truncation on first null char,
 	  // pass number of text bytes to sqlite3_bind_text16() instead of -1 as third parameter:
 	  // (number of bytes are calculated by multiplying string length with the size of one wide character.
@@ -85,6 +80,11 @@ namespace SQLite3
 	  // Question: is this always correct in all conditions?
 	  int length = val->Length() * sizeof(wchar_t);
 	  return sqlite3_bind_text16(statement, index, val->Begin(), length, SQLITE_TRANSIENT);
+  }
+
+  int Statement::BindInt(int index, int val)
+  {
+    return sqlite3_bind_int(statement, index, val);
   }
 
   int Statement::BindInt64(int index, long long val)
